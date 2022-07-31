@@ -15,7 +15,8 @@ let rec join_list lst ~sep:c =
   let rec join r s =
     match r with
     | [] -> s
-    | h :: t -> if t = [] then (s ^ h) else join t (s ^ h ^ c)
+    | h :: [] -> s ^ h
+    | h :: t -> join t (s ^ h ^ c)
   in (join lst "");;
 
 (* val join_list : string list -> sep:string -> string *)
